@@ -40,7 +40,6 @@ fastlane/README*
 
 #vim
 ################
-*.un~
 *.*~
 
 # Directories #
