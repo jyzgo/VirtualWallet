@@ -1,4 +1,4 @@
-# React Native Material Ui Demo App
+#Offline virtual wallet Demo App
 
 This repository contains a React Native project, implementing the [react-native-material-ui](https://github.com/xotahal/react-native-material-ui) package.
 
