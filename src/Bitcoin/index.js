@@ -1,7 +1,7 @@
 import { View, Text,StyleSheet } from 'react-native';
 import React, { Component, PropTypes } from 'react';
 
-import { ListItem, Toolbar } from '../react-native-material-ui';
+import {Subheader, Button,ListItem, Toolbar } from '../react-native-material-ui';
 
 import routes from '../routes';
 
@@ -9,6 +9,15 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 	},
+	rowContainer: {
+		margin: 8,
+		flexDirection: 'row',
+		justifyContent: 'center',
+	},
+	button: {
+		marginHorizontal: 8,
+		width:100
+	}
 });
 const propTypes = {
 	navigator: PropTypes.object.isRequired,
@@ -24,7 +33,13 @@ class Bitcoin extends Component {
 			centerElement={this.props.route.title}
 			/>
 
-			<Text>Bitcoin</Text> 
+			<Subheader text="Flat buttons" />
+			<View style={styles.rowContainer}>
+			<View style={styles.button}>
+			<Button raised primary text="SendCoin" />
+			</View>
+			</View>
+
 			</View>
 		);
 	}
