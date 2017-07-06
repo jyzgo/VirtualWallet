@@ -1,6 +1,7 @@
 import { View, Text,StyleSheet } from 'react-native';
 import React, { Component, PropTypes } from 'react';
 
+import Icon from 'react-native-vector-icons/Ionicons';
 import {Subheader, Button,ListItem, Toolbar } from '../react-native-material-ui';
 
 import routes from '../routes';
@@ -50,7 +51,7 @@ class Bitcoin extends Component {
 				</View>
 				<View style={styles.rowContainer}>
 					<View style={styles.button}>
-						<Button raised primary text="Scan QR code" icon="qr-scanner" />
+						<Button raised primary text="Scan QR code" icon="camera-enhance" />
 					</View>
 				</View>
 			<View style={styles.rowContainer}>
@@ -58,7 +59,9 @@ class Bitcoin extends Component {
 						<Button raised primary text="Pay address from clipboard" />
 					</View>
 				</View>
-		
+			       <Icon.Button name="ios-qr-scanner" backgroundColor="#3b5998">
+    <Text style={{fontFamily: 'Arial', fontSize: 15}}>scan QR code</Text>
+  </Icon.Button> 
 			</View>
 
 			</View>
