@@ -16,8 +16,19 @@ const styles = StyleSheet.create({
 	},
 	button: {
 		marginHorizontal: 8,
-		width:100
+		width:260
 	}
+	,clibbutton: {
+		marginHorizontal: 8,
+		width:260
+	}
+	,
+	 vcontainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+		 
+  }
 });
 const propTypes = {
 	navigator: PropTypes.object.isRequired,
@@ -27,17 +38,27 @@ class Bitcoin extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-			<Toolbar
-			leftElement="arrow-back"
-			onLeftElementPress={() => this.props.navigator.pop()}
-			centerElement={this.props.route.title}
-			/>
+				<Toolbar
+				leftElement="arrow-back"
+				onLeftElementPress={() => this.props.navigator.pop()}
+				centerElement={this.props.route.title}
+				/>
+			<View style={styles.vcontainer}>
 
-			<Subheader text="Flat buttons" />
+				<View style={styles.rowContainer}>
+					<Subheader  text="Send Money" />
+				</View>
+				<View style={styles.rowContainer}>
+					<View style={styles.button}>
+						<Button raised primary text="Scan QR code" icon="qr-scanner" />
+					</View>
+				</View>
 			<View style={styles.rowContainer}>
-			<View style={styles.button}>
-			<Button raised primary text="SendCoin" />
-			</View>
+					<View style={styles.clibbutton}>
+						<Button raised primary text="Pay address from clipboard" />
+					</View>
+				</View>
+		
 			</View>
 
 			</View>

@@ -40,8 +40,9 @@ fastlane/README*
 
 #vim
 ################
-*.*~
+*~
 *.swp
+*.swo
 
 # Directories #
 ###############

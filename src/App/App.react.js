@@ -10,7 +10,7 @@ const UIManager = NativeModules.UIManager;
 
 const uiTheme = {
     palette: {
-        primaryColor: COLOR.green500,
+        primaryColor: COLOR.blue500,
         accentColor: COLOR.pink500,
     },
 };
@@ -23,7 +23,7 @@ class App extends Component {
         return (
             <Container>
                 <StatusBar backgroundColor="rgba(0, 0, 0, 0.2)" translucent />
-                <View style={{ backgroundColor: COLOR.green500, height: 24 }} />
+                <View style={{ backgroundColor: COLOR.blue500, height: 24 }} />
                 <route.Page
                     route={route}
                     navigator={navigator}
