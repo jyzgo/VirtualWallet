@@ -35,6 +35,10 @@ const propTypes = {
 	route: PropTypes.object.isRequired,
 };
 class Bitcoin extends Component {
+	onScan()
+	{
+		console.log('QR pressed');
+	}
 	render() {
 		return (
 			<View style={styles.container}>
@@ -50,7 +54,7 @@ class Bitcoin extends Component {
 				</View>
 				<View style={styles.rowContainer}>
 					<View style={styles.button}>
-						<Button raised primary text="Scan QR code" icon="qr-scanner" />
+						<Button raised primary text="Scan QR code" icon="camera-enhance" onPress={()=>this.onScan()} />
 					</View>
 				</View>
 			<View style={styles.rowContainer}>
@@ -58,6 +62,7 @@ class Bitcoin extends Component {
 						<Button raised primary text="Pay address from clipboard" />
 					</View>
 				</View>
+				<View style={{height:150}}/>
 		
 			</View>
 
