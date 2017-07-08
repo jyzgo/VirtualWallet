@@ -3,40 +3,31 @@ import {TouchableOpacity,  View, Text,StyleSheet } from 'react-native';
 import React, { Component, PropTypes } from 'react';
 import Container from '../Container';
 import { ActionButton, Toolbar } from '../react-native-material-ui';
-
-import QRCodeScreen from'../QRCodeScreen';
+import QRCodeScanner from 'react-native-qrcode-scanner';
 const propTypes = {
     navigator: PropTypes.object.isRequired,
     route: PropTypes.object.isRequired,
 };
 
-class Test extends Component{
-  constructor(props){
-    super(props);
-    setTimeout(()=>this.testLog() , 3000);
-  }
-  testLog()
-  {
-  	console.log("test call");
-
-  }
-  render(){
-  	return (<View/>);
-	}
-
-}
 
 class Scanner extends Component {
 
-	_onSuccess()
+  constructor (props)
+  {
+    super(props);
+    this.state={text:"Nolink"};
+    this._onSuccess = this._onSuccess.bind(this);
+    setInterval(()=>{console.log("tt")
+    },2000);
+  }
+	_onSuccess(e)
 	{
-		console.log('Success');
+		console.log('Success'+ e);
+		//this.props.navigator.pop();
+	  this.setState({text:e});
+			//  Linking.openURL(e.data).catch(err => console.error('An error occured', err));
 	}
 
-	_onPressQRCode()
-  {
-    console.log("qr press");
-  }
     render() {
         return (
             <Container>
@@ -45,11 +36,10 @@ class Scanner extends Component {
                     onLeftElementPress={() => this.props.navigator.pop()}
                     centerElement={this.props.route.title}
                 />
-              <TouchableOpacity onPress={this._onPressQRCode}>
-                <Text>Read QRCode</Text>
-              </TouchableOpacity>
-              <QRCodeScreen  />
-				<Test testLog = {()=>console.log("override")}/>
+              <Text>
+                {this.state.text}
+              </Text>
+              <QRCodeScanner onRead={(e)=>this._onSuccess(e)}/>
             </Container>
         );
     }
