@@ -18,11 +18,16 @@ import Toolbar from './Toolbars';
 import Bitcoin from './Bitcoin';
 import Litecoin from './Litecoin';
 import Ethereum from './Ethereum';
+import Scanner from './Scanner';
 
 export default {
 	home: {
 		title: 'Select Coin',
 		Page: Home,
+	},
+	scanner:{
+		title:'Scanner',
+		Page:Scanner
 	},
 	bitcoin:{
 		title:'Bitcoin',

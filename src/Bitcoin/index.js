@@ -37,7 +37,7 @@ const propTypes = {
 class Bitcoin extends Component {
 	onScan()
 	{
-		console.log('QR pressed');
+		this.props.navigator.push(routes.scanner);
 	}
 	render() {
 		return (
