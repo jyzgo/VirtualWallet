@@ -1,8 +1,9 @@
-import { View, Text,StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import React, { Component, PropTypes } from 'react';
 
-import {Subheader, Button,ListItem, Toolbar } from '../react-native-material-ui';
+import {Subheader, Button,Toolbar } from '../react-native-material-ui';
 
+import Scanner from '../Scanner';
 import routes from '../routes';
 
 const styles = StyleSheet.create({
@@ -16,13 +17,15 @@ const styles = StyleSheet.create({
 	},
 	button: {
 		marginHorizontal: 8,
-		width:260
+		width:260,
+    height:50
 	}
-	,clibbutton: {
+	,clipbutton: {
 		marginHorizontal: 8,
-		width:260
-	}
-	,
+		width:260,
+		height:50
+	},
+
 	 vcontainer: {
     flex: 1,
     justifyContent: 'center',
@@ -30,6 +33,12 @@ const styles = StyleSheet.create({
 		 
   }
 });
+
+const raisedButton={
+		container:{height:50}
+
+	};
+
 const propTypes = {
 	navigator: PropTypes.object.isRequired,
 	route: PropTypes.object.isRequired,
@@ -37,7 +46,7 @@ const propTypes = {
 class Bitcoin extends Component {
 	onScan()
 	{
-		this.props.navigator.push(routes.scanner);
+		this.props.navigator.push({title:'Bitcoin Scanner',Page:Scanner,coin:'bitcoin'});
 	}
 	render() {
 		return (
@@ -50,16 +59,16 @@ class Bitcoin extends Component {
 			<View style={styles.vcontainer}>
 
 				<View style={styles.rowContainer}>
-					<Subheader  text="Send Money" />
+					<Subheader  style = {{text:{fontSize:20}}} text="Send Money" />
 				</View>
 				<View style={styles.rowContainer}>
 					<View style={styles.button}>
-						<Button raised primary text="Scan QR code" icon="camera-enhance" onPress={()=>this.onScan()} />
+						<Button raised primary upperCase={false} text="Scan QR code" style={raisedButton} icon="camera-enhance" onPress={()=>this.onScan()} />
 					</View>
 				</View>
 			<View style={styles.rowContainer}>
-					<View style={styles.clibbutton}>
-						<Button raised primary text="Pay address from clipboard" />
+					<View style={styles.clipbutton}>
+						<Button raised primary upperCase={false} text="Pay address from clipboard" style={raisedButton}/>
 					</View>
 				</View>
 				<View style={{height:150}}/>

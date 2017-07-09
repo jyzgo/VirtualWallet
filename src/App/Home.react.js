@@ -132,6 +132,7 @@ class Home extends Component {
 
         return (
             <ListItem
+                style={{container:{height:70},primaryText:{fontSize:20}}}
                 divider
                 leftElement={<Avatar text={title[0]} />}
                 onLeftElementPress={() => this.onAvatarPressed(title)}
