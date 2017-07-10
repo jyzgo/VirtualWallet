@@ -9,9 +9,9 @@ const propTypes = {
 };
 
 const raisedButton={
-		container:{height:50}
+  container:{height:50}
 
-	};
+};
 
 class Sender extends Component {
 
@@ -31,11 +31,17 @@ class Sender extends Component {
       <Container>
         <Toolbar
           leftElement="arrow-back"
-          onLeftElementPress={() => this.props.navigator.pop()}
+          onLeftElementPress={() => this.props.navigator.popN(this.props.route.popNum)}
           centerElement={this.props.route.coin + ' sender'}
         />
 
         <View style={styles.vcontainer}>
+          <Text>
+            Send money to :
+          </Text>
+          <Text>
+            {this.props.route.data}
+          </Text>
           <TextInput
             style={{height: 40,width:100}}
             placeholder="Input Num"
