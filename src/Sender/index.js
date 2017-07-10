@@ -1,5 +1,5 @@
 
-import {StyleSheet,View,Text } from 'react-native';
+import {StyleSheet,View,Text ,TextInput} from 'react-native';
 import React, { Component, PropTypes } from 'react';
 import Container from '../Container';
 import {  Toolbar ,Button} from '../react-native-material-ui';
@@ -18,6 +18,7 @@ class Sender extends Component {
   constructor (props)
   {
     super(props);
+    this.state={text:''};
   }
 
   onTransfer()
@@ -35,12 +36,19 @@ class Sender extends Component {
         />
 
         <View style={styles.vcontainer}>
-
+          <TextInput
+            style={{height: 40,width:100}}
+            placeholder="Input Num"
+            keyboardType = 'numeric'
+            onChangeText={(text) => this.setState({text})}
+            maxLength = {9}
+          />
           <View style={styles.rowContainer}>
             <View style={styles.button}>
               <Button raised primary upperCase={false} text="Confirm Transfer" style={raisedButton}  onPress={()=>this.onTransfer()} />
             </View>
           </View>
+          <View style = {{height:234}}/>
         </View>
       </Container>
     );
