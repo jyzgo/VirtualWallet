@@ -147,7 +147,7 @@ class Home extends Component {
             <Container>
                 {this.renderToolbar()}
                 <ScrollView
-                    keyboardShouldPersistTaps
+                    keyboardShouldPersistTaps='always'
                     keyboardDismissMode="interactive"
                     onScroll={this.onScroll}
                 >

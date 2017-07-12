@@ -2,6 +2,8 @@ import {StyleSheet,View,Text } from 'react-native';
 import React, { Component, PropTypes } from 'react';
 import Container from '../Container';
 import {  Toolbar,Subheader } from '../react-native-material-ui';
+import QRCode from 'react-native-qrcode';
+
 const propTypes = {
   navigator: PropTypes.object.isRequired,
   route: PropTypes.object.isRequired,
@@ -26,17 +28,22 @@ class Receiver extends Component {
         <Toolbar
           leftElement="arrow-back"
           onLeftElementPress={() => this.props.navigator.pop()}
-          centerElement={this.props.route.coin + ' receiver'}
+          centerElement={'Receive Money'}
         />
 
         <View style={styles.vcontainer}>
           <Subheader text = 'Receive money : '/>
           <View style={styles.rowContainer}>
           </View>
+          <QRCode
+            value={this.props.route.myAddress}
+            size={200}
+            bgColor='purple'
+            fgColor='white'/>
           <Text>
             {this.props.route.myAddress}
           </Text>
-          <View style = {{height:234}}/>
+          <View style = {{height:100}}/>
         </View>
       </Container>
     );
