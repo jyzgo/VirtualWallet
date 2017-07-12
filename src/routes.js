@@ -30,7 +30,7 @@ export default {
 		Page:Scanner
 	},
 	bitcoin:{
-		title:'Bitcoin',
+		title:'BitcoinWindow',
 		Page:Bitcoin
 	},
 	litecoin:{

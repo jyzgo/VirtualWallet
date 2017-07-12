@@ -152,7 +152,7 @@ class Home extends Component {
                     onScroll={this.onScroll}
                 >
 
-                    {this.renderItem('Bitcoin', routes.bitcoin)}
+                    {this.renderItem('BitcoinWindow', routes.bitcoin)}
                     {this.renderItem('Litecoin', routes.litecoin)}
                     {this.renderItem('Ethereum', routes.ethereum)}
                     {this.renderItem('ActionButton', routes.actionButton)}

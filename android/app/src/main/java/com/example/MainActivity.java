@@ -1,6 +1,10 @@
 package com.example;
 
 import com.facebook.react.ReactActivity;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.bitgo.randombytes.RandomBytesPackage;
+import com.lwansbrough.RCTCamera.RCTCameraPackage;
+
 
 public class MainActivity extends ReactActivity {
 
