@@ -4,7 +4,8 @@ import React, { Component, PropTypes } from 'react';
 import {Subheader, Button,Toolbar } from '../react-native-material-ui';
 
 import Scanner from '../Scanner';
-import  Sender from  '../Sender';
+import Sender from  '../Sender';
+import Receiver from '../Receiver';
 import 'wallet/shim' // make sure to use es6 import and not require()
 import Bitcoin from 'react-native-bitcoinjs-lib'
 
@@ -47,6 +48,7 @@ const propTypes = {
 };
 const TITLE_NAME = 'BitcoinWindow Scanner';
 const COIN_NAME = 'bitcoin';
+const myaddress='myaddress12343';
 class BitcoinWindow extends Component {
   onScan()
   {
@@ -57,9 +59,14 @@ class BitcoinWindow extends Component {
   onCopyFromClipboard()
   {
     Clipboard.getString().then((content) => {
-      console.log("content is " + content);
       this.props.navigator.push({Page:Sender,data : content ,coin:COIN_NAME,popNum:1});
     });
+  }
+
+
+  onReceiveMoney()
+  {
+    this.props.navigator.push({Page:Receiver,myAddress:myaddress});
   }
 
   getBitcoinAddress()
@@ -94,7 +101,7 @@ class BitcoinWindow extends Component {
           </View>
           <View style={styles.rowContainer}>
             <View style={styles.clipbutton}>
-              <Button raised primary upperCase={false} text="Get Bitcoin Address" style={raisedButton} onPress={()=>this.getBitcoinAddress()}/>
+              <Button raised primary upperCase={false} text="Receive Money" style={raisedButton} onPress={()=>this.onReceiveMoney()}/>
             </View>
           </View>
           <View style={{height:150}}/>
