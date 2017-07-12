@@ -8,7 +8,7 @@ import Sender from  '../Sender';
 import Receiver from '../Receiver';
 import 'wallet/shim' // make sure to use es6 import and not require()
 import Bitcoin from 'react-native-bitcoinjs-lib'
-
+var RNFS = require('react-native-fs');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -49,7 +49,29 @@ const propTypes = {
 const TITLE_NAME = 'BitcoinWindow Scanner';
 const COIN_NAME = 'bitcoin';
 const myaddress='myaddress12343';
+const filepath = RNFS.DocumentDirectoryPath + '/bw.d';
+
 class BitcoinWindow extends Component {
+  constructor (props)
+  {
+    super(props);
+    RNFS.exists(filepath).then(
+      ()=>{
+        console.log('File exist');
+      },
+      ()=>{
+        console.log("File not");
+        // write the file
+        RNFS.writeFile(filepath, 'Lorem ipsum dolor sit amet', 'utf8')
+          .then((success) => {
+            console.log('FILE WRITTEN!');
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      });
+
+  }
   onScan()
   {
     this.props.navigator.push({title:TITLE_NAME,Page:Scanner,coin: COIN_NAME});
