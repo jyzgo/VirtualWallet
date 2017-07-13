@@ -1,4 +1,4 @@
-import { Clipboard, View, StyleSheet } from 'react-native';
+import { Clipboard, View, StyleSheet,Alert } from 'react-native';
 import React, { Component, PropTypes } from 'react';
 
 import {Subheader, Button,Toolbar } from '../react-native-material-ui';
@@ -48,33 +48,71 @@ const propTypes = {
 };
 const TITLE_NAME = 'BitcoinWindow Scanner';
 const COIN_NAME = 'bitcoin';
-const myaddress='myaddress12343';
-const filepath = RNFS.DocumentDirectoryPath + '/bw.d';
+const filepath = RNFS.DocumentDirectoryPath + '/bw.dd';
 
 class BitcoinWindow extends Component {
   constructor (props)
   {
     super(props);
-    RNFS.exists(filepath).then(
-      ()=>{
-        console.log('File exist');
-      },
-      ()=>{
-        console.log("File not");
-        // write the file
-        RNFS.writeFile(filepath, 'Lorem ipsum dolor sit amet', 'utf8')
-          .then((success) => {
-            console.log('FILE WRITTEN!');
-          })
-          .catch((err) => {
-            console.log(err.message);
-          });
-      });
-
+    this.CheckPRExist();
+    this.wifKey="";
+    this.address ="";
   }
+
+  DeleteFile()
+  {
+    RNFS.unlink(filepath);
+  }
+  CheckPRExist()
+  {
+    RNFS.exists(filepath).then((isExists)=>{
+        if(isExists) {
+          console.log('file exist')
+         RNFS.readFile(filepath).then((content)=>{
+            this.wifKey = content;
+            var key = Bitcoin.ECPair.fromWIF(content);
+            this.address = key.getAddress();
+         })
+        }else
+        {
+          this.AlertCreate();
+        }
+      }
+    );
+  }
+  AlertCreate()
+  {
+    Alert.alert(
+      'Create A Bitcoin Pair',
+      'No valid bitcoin wallet,we will create one for you.',
+      [
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ],
+      { cancelable: false }
+    )
+
+    var keypair = Bitcoin.ECPair.makeRandom();
+    var wifKey = keypair.toWIF();
+    this.wifKey = wifKey;
+    this.address = keypair.getAddress();
+    this.WriteFile(wifKey);
+  }
+
+  WriteFile(wifKey)
+  {
+    console.log('wif '+wifKey);
+    RNFS.writeFile(filepath, wifKey, 'utf8')
+      .then((success) => {
+        console.log('FILE WRITTEN!');
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }
+
   onScan()
   {
-    this.props.navigator.push({title:TITLE_NAME,Page:Scanner,coin: COIN_NAME});
+    this.props.navigator.push({title:TITLE_NAME,Page:Scanner,coin: COIN_NAME,wif:this.wifKey});
   }
 
 
@@ -88,12 +126,13 @@ class BitcoinWindow extends Component {
 
   onReceiveMoney()
   {
-    this.props.navigator.push({Page:Receiver,myAddress:myaddress});
+    this.props.navigator.push({Page:Receiver,myAddress:this.address});
   }
 
   getBitcoinAddress()
   {
     const keypair = Bitcoin.ECPair.makeRandom();
+
     console.log(keypair.getAddress());
   }
 

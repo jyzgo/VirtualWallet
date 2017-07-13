@@ -20,7 +20,7 @@ class Scanner extends Component {
   }
 	_onSuccess(e)
 	{
-    this.props.navigator.push({Page:Sender,data:e.data,coin:this.props.route.coin,popNum:2});
+    this.props.navigator.push({Page:Sender,data:e.data,coin:this.props.route.coin,popNum:2,wif:this.props.route.wif});
 	}
 
     render() {
