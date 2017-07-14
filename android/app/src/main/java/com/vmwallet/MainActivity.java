@@ -1,4 +1,4 @@
-package com.example;
+package com.vmwallet;
 
 import com.facebook.react.ReactActivity;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -14,6 +14,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "example";
+        return "VMWallet";
     }
 }

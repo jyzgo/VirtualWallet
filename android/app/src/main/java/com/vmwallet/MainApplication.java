@@ -1,4 +1,4 @@
-package com.example;
+package com.vmwallet;
 
 import android.app.Application;
 import android.util.Log;
