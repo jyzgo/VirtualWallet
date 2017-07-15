@@ -7,6 +7,7 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 const propTypes = {
     navigator: PropTypes.object.isRequired,
     route: PropTypes.object.isRequired,
+    coin:PropTypes.object.isRequired,
 };
 import Sender from '../Sender'
 
@@ -20,7 +21,7 @@ class Scanner extends Component {
   }
 	_onSuccess(e)
 	{
-    this.props.navigator.push({Page:Sender,data:e.data,coin:this.props.route.coin,popNum:2,wif:this.props.route.wif});
+    this.props.navigator.push({Page:Sender,data:e.data,coin:this.props.coin,popNum:2,wif:this.props.route.wif});
 	}
 
     render() {
@@ -29,7 +30,7 @@ class Scanner extends Component {
                 <Toolbar
                     leftElement="arrow-back"
                     onLeftElementPress={() => this.props.navigator.pop()}
-                    centerElement={this.props.route.title}
+                    centerElement={this.props.coin.name}
                 />
               <QRCodeScanner onRead={(e)=>this._onSuccess(e)}/>
             </Container>

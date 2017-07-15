@@ -1,9 +1,8 @@
 import { View,Text, StyleSheet } from 'react-native';
 import React, { Component, PropTypes } from 'react';
-
-import { ListItem, Toolbar } from '../react-native-material-ui';
-
-import routes from '../routes';
+import { Toolbar } from '../react-native-material-ui';
+import  constValue from '../constValue';
+import  CoinWindow from  '../CoinWindow';
 
 const styles = StyleSheet.create({
     container: {
@@ -14,7 +13,7 @@ const propTypes = {
     navigator: PropTypes.object.isRequired,
     route: PropTypes.object.isRequired,
 };
-class Litcoin extends Component {
+class Litecoin extends Component {
     render() {
         return (
             <View style={styles.container}>
@@ -23,12 +22,12 @@ class Litcoin extends Component {
                     onLeftElementPress={() => this.props.navigator.pop()}
                     centerElement={this.props.route.title}
                 />
-   <Text>Litcoin</Text> 
+              <CoinWindow coin = {constValue.litecoin}/>
             </View>
         );
     }
 }
 
-Litcoin.propTypes = propTypes;
+Litecoin.propTypes = propTypes;
 
-export default Litcoin;
+export default Litecoin;
