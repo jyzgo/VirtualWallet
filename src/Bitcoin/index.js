@@ -24,7 +24,7 @@ class Bitcoin extends Component {
                     onLeftElementPress={() => this.props.navigator.pop()}
                     centerElement={'Bitcoin'}
                 />
-              <CoinWindow coin ={constValue.bitcoin} />
+              <CoinWindow coin ={constValue.bitcoin} navigator={this.props.navigator} />
             </View>
         );
     }

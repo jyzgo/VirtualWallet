@@ -4,6 +4,7 @@ import {Subheader, Button,Toolbar } from '../react-native-material-ui';
 import Scanner from '../Scanner';
 import Sender from  '../Sender';
 import Receiver from '../Receiver';
+import WIFPage from '../WIFPage';
 import 'wallet/shim' // make sure to use es6 import and not require()
 import Bitcoin from 'react-native-bitcoinjs-lib'
 var RNFS = require('react-native-fs');
@@ -41,6 +42,7 @@ const raisedButton={
 };
 
 const propTypes = {
+  navigator: PropTypes.object.isRequired,
   coin: PropTypes.object.isRequired,
 };
 
@@ -121,6 +123,20 @@ class CoinWindow extends Component {
     this.props.navigator.push({Page:Receiver,myAddress:this.address});
   }
 
+  onShowYourWIF()
+  {
+     Alert.alert(
+       'WARNING!',
+       'WIF PAGE!DO NOT SHOW ANY ONE THIS PAGE!!',
+       [
+         {text: 'OK', onPress:()=> this.props.navigator.push({Page:WIFPage,wif:this.wifKey})},
+         {text: 'Cancel'}
+       ],
+       { cancelable: false }
+     )
+
+  }
+
 
   render() {
     return (
@@ -139,11 +155,15 @@ class CoinWindow extends Component {
             <View style={styles.clipbutton}>
               <Button raised primary upperCase={false} text="Pay address from clipboard" style={raisedButton} onPress={()=>this.onCopyFromClipboard()}/>
             </View>
-
           </View>
           <View style={styles.rowContainer}>
             <View style={styles.clipbutton}>
               <Button raised primary upperCase={false} text="Receive Money" style={raisedButton} onPress={()=>this.onReceiveMoney()}/>
+            </View>
+          </View>
+          <View style={styles.rowContainer}>
+            <View style={styles.clipbutton}>
+              <Button raised primary upperCase={false} text="Your WIF " style={raisedButton} onPress={()=>this.onShowYourWIF()}/>
             </View>
           </View>
           <View style={{height:150}}/>

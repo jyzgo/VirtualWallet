@@ -22,7 +22,7 @@ class Litecoin extends Component {
                     onLeftElementPress={() => this.props.navigator.pop()}
                     centerElement={this.props.route.title}
                 />
-              <CoinWindow coin = {constValue.litecoin}/>
+              <CoinWindow coin = {constValue.litecoin}navigator={this.props.navigator} />
             </View>
         );
     }

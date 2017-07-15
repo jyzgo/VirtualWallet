@@ -23,7 +23,7 @@ class Ethereum extends Component {
           onLeftElementPress={() => this.props.navigator.pop()}
           centerElement={this.props.route.title}
         />
-        <CoinWindow coin = {constValue.ethereum}/>
+        <CoinWindow coin = {constValue.ethereum}navigator={this.props.navigator} />
       </View>
     );
   }
