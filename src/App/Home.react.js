@@ -155,19 +155,19 @@ class Home extends Component {
                     {this.renderItem('Bitcoin', routes.bitcoin)}
                     {this.renderItem('Litecoin', routes.litecoin)}
                     {this.renderItem('Ethereum', routes.ethereum)}
-                    {this.renderItem('ActionButton', routes.actionButton)}
-                    {this.renderItem('Avatar', routes.avatar)}
-                    {this.renderItem('Badge', routes.badge)}
-                    {this.renderItem('Bottom navigation', routes.bottomNavigation)}
-                    {this.renderItem('Buttons', routes.button)}
-                    {this.renderItem('Cards', routes.card)}
-                    {this.renderItem('Checkbox', routes.checkbox)}
-                    {this.renderItem('Dialog', routes.dialog)}
-                    {this.renderItem('Drawer', routes.drawer)}
-                    {this.renderItem('Icon toggles', routes.iconToggle)}
-                    {this.renderItem('List items', routes.list)}
-                    {this.renderItem('Radio buttons', routes.radioButton)}
-                    {this.renderItem('Toolbars', routes.toolbar)}
+                    {/*{this.renderItem('ActionButton', routes.actionButton)}*/}
+                    {/*{this.renderItem('Avatar', routes.avatar)}*/}
+                    {/*{this.renderItem('Badge', routes.badge)}*/}
+                    {/*{this.renderItem('Bottom navigation', routes.bottomNavigation)}*/}
+                    {/*{this.renderItem('Buttons', routes.button)}*/}
+                    {/*{this.renderItem('Cards', routes.card)}*/}
+                    {/*{this.renderItem('Checkbox', routes.checkbox)}*/}
+                    {/*{this.renderItem('Dialog', routes.dialog)}*/}
+                    {/*{this.renderItem('Drawer', routes.drawer)}*/}
+                    {/*{this.renderItem('Icon toggles', routes.iconToggle)}*/}
+                    {/*{this.renderItem('List items', routes.list)}*/}
+                    {/*{this.renderItem('Radio buttons', routes.radioButton)}*/}
+                    {/*{this.renderItem('Toolbars', routes.toolbar)}*/}
                 </ScrollView>
                 <ActionButton
                     actions={[
